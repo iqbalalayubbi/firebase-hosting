@@ -45,7 +45,7 @@ export default {
             this.$router.push('/add')
         },
         outClick(){
-            fetch('http://localhost:3000/items',{
+            fetch('https://firebase-nodejs-new.herokuapp.com/items',{
                 method:'post',
                 headers:{
                     'Content-Type':'application/json'
