@@ -1,12 +1,13 @@
 <template>
   <div class="flex flex-col items-center gap-5">
-    <div class="mt-5 border-primary border-2 rounded-md">
-        <Input placeholder="nama barang" @isInput="onInput"/>
-        <Button name="Cari"/>
+    <h1 class="font-bold mt-10 text-4xl">KIOS SULTON</h1>
+    <div class=" mb-3 w-[90%] border-primary border-2 rounded-md">
+        <Input placeholder="nama barang" @isInput="onInput" class="h-10"/>
     </div>
     <Table :items="data"/>
 
     <Button class="w-[90%]" name="Tambah Barang" @isClick="addClick"/>
+    <Button class="w-[90%] bg-red-500" name="Logout" @isClick="outClick"/>
   </div>
 </template>
 
@@ -22,14 +23,7 @@ export default {
     },
     data(){
         return{
-            items:[
-                {id:'1',barcode:'2940839090',nama:'sosis sonice',harga:1000},
-                {id:'2',barcode:'5445546565',nama:'real good',harga:4000},
-                {id:'3',barcode:'5445546565',nama:'susu beruang',harga:4000},
-                {id:'4',barcode:'3843843843',nama:'nabati',harga:6000},
-                {id:'5',barcode:'9359590595',nama:'beras',harga:11000},
-                {id:'6',barcode:'3204293943',nama:'good day',harga:7000}
-            ],
+            items:[],
             data:[]
         }
     },
@@ -49,10 +43,23 @@ export default {
         },
         addClick(){
             this.$router.push('/add')
+        },
+        outClick(){
+            fetch('http://localhost:3000/items',{
+                method:'post',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:localStorage.getItem('items')
+            }).then(res => res.json()).then(() => {
+                localStorage.removeItem('items')
+                this.$router.push('/')
+            })
         }
     },
     created(){
-        this.data = this.items
+        this.data = JSON.parse(localStorage.getItem('items'))
+        this.items = JSON.parse(localStorage.getItem('items'))      
     }
 }
 </script>

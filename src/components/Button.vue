@@ -1,5 +1,5 @@
 <template>
-    <button class="bg-primary text-white px-5 py-3 rounded-md" @click="isClick">{{name}}</button>
+    <button class="bg-primary text-white px-3 py-2 rounded-md" @click="isClick">{{name}}</button>
 </template>
 
 <script>
