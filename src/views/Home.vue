@@ -41,7 +41,7 @@ export default {
         getName(value){
             const items = []
             this.items.forEach(item => {
-                if (item.nama.startsWith(value)){
+                if (item.nama.toLowerCase().startsWith(value)){
                     items.push(item)
                 }
             })

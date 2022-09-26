@@ -11,7 +11,7 @@ export default {
     },
     methods:{
         isInput(){
-            this.$emit('isInput',this.$refs.input.value)
+            this.$emit('isInput',this.$refs.input.value.toLowerCase())
         }
     }
 }
