@@ -71,7 +71,7 @@ export default {
                     items.splice(i,1)
                 }
             })
-            fetch('http://localhost:3000/items/'+id,{
+            fetch('https://firebase-nodejs-new.herokuapp.com/items/'+id,{
                 method:'delete',
             }).then(res => res.json()).then(() => {
                 localStorage.setItem('items',JSON.stringify(items))
